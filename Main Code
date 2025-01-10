@@ -1,0 +1,82 @@
+#include <iostream>
+#include <random>
+using namespace std;
+int menu(){
+    int ch;
+    cout<<"\nPress 1. For Rock";
+    cout<<"\nPress 2. For Paper";
+    cout<<"\nPress 3. For Scissors";
+    cout<<"\nPress 4. To quit the game";
+    cout<<"\nEnter your choice:";
+    cin>>ch;
+    return ch;
+}
+int main() {
+    cout<<"Playing Rock Paper Scissors";
+    //random
+    random_device rd;
+    mt19937 gen(rd()); 
+    uniform_int_distribution<> dist(1, 3);
+    int choice;
+    do{
+        int random_integer = dist(gen);
+        choice=menu();
+        switch(choice){
+
+            case 1:{
+            //You choose Rock
+                if(random_integer==1){
+                    cout<<"\nSame Choice.";
+                    cout<<"\nTry Again.";
+                }
+                else if(random_integer==2){
+                    cout<<"\nComputer Choose Paper";
+                    cout<<"\nYou Lost";
+                }
+                else if(random_integer==3){
+                    cout<<"\nComputer Choose Scissors";
+                    cout<<"\nYou Won";
+                }
+                break;
+            }    
+            case 2:{
+            //You choose Paper
+                if(random_integer==1){
+                    cout<<"\nComputer Choose Rock";
+                    cout<<"\nYou Won";
+                }
+                else if(random_integer==2){
+                    cout<<"\nSame Choice.";
+                    cout<<"\nTry Again.";
+                }
+                else if(random_integer==3){
+                    cout<<"\nComputer Choose Scissors";
+                    cout<<"\nYou Lost";
+                }
+                break;
+            }    
+            case 3:{
+            //You choose Scissors
+                if(random_integer==1){
+                    cout<<"\nComputer Choose Rock";
+                    cout<<"\nYou Lost";
+                }
+                else if(random_integer==2){
+                    cout<<"\nComputer Choose Paper";
+                    cout<<"\nYou Won";
+                }
+                else if(random_integer==3){
+                    cout<<"\nSame Choice.";
+                    cout<<"\nTry Again.";
+                }
+                break;
+            }    
+            case 4:{
+                cout<<"Successfully Exit.";
+                break;
+                
+            }
+        }
+    }while(choice!=4);
+    return 0;
+}
